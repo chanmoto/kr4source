@@ -1,14 +1,31 @@
 import './App.css';
 import GraphPage from './components/graph';
+import React, { Component } from "react";
+import { ApolloProvider } from "react-apollo";
+import apolloClient from "./components/apolloClient";
+import TokenForm from "./components/TokenForm";
 
-function App() {
-  return (
-    <div className="App">
+class App extends Component {
+  state = {
+    token: null
+  };
 
-    <GraphPage />
+  componentDidMount() {
+    this.setState({ token: sessionStorage.getItem("token") });
+  }
 
-    </div>
-  );
+  setToken = token => {
+    sessionStorage.setItem("token", token);
+    this.setState({ token });
+  };
+
+  render() {
+    const { token } = this.state;
+
+    return (
+<GraphPage /> 
+    );
+  }
 }
 
 export default App;

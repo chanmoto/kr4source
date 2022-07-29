@@ -1,28 +1,11 @@
 import CrossValid from '../data/cross.json';
 
-
 //elementデータを取得する
 
 const DIR = process.env.PUBLIC_URL + "/";
  
-export const fetchCrossvalidData = (state) => {
+export const fetchCrossvalidData = (dep) => {
 
-    let dep = Object.values(CrossValid);
-    let vals = [];
-    let finalReturn = [];
-    if (state) {
-        for (var i = 0; i < dep.length; i++) {
-            var datum = dep[i];
-            vals.push(datum);
-        }
-        let returnInfo = Object.values(vals);
-        for (var j = 0; j < returnInfo.length; j++) {
-            if (returnInfo[j].State_Letters === state) {
-                finalReturn.push(returnInfo[j]);
-            }
-        }
-        return finalReturn;
-    }
     try {
 
         const nodes = [];
